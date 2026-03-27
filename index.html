@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atmos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <div class="app">
+
+    <header>
+      <div class="logo">Atmos</div>
+      <button class="theme-btn" id="themeBtn" title="Alternar tema">🌙</button>
+    </header>
+
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Buscar cidade..." autocomplete="off" />
+      <button class="search-btn" id="searchBtn">🔍</button>
+    </div>
+
+    <div class="suggestions">
+      <div class="chip" onclick="loadCity('São Paulo')">São Paulo</div>
+      <div class="chip" onclick="loadCity('Rio de Janeiro')">Rio de Janeiro</div>
+      <div class="chip" onclick="loadCity('Tokyo')">Tokyo</div>
+      <div class="chip" onclick="loadCity('New York')">New York</div>
+      <div class="chip" onclick="loadCity('London')">London</div>
+    </div>
+
+    <div style="position: relative;">
+      <div class="loading" id="loading">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="card" id="mainCard">
+        <div class="city-row">
+          <div class="city-name" id="cityName">São Paulo</div>
+          <button class="save-btn" id="saveBtn" onclick="toggleSave()" title="Salvar cidade">🔖</button>
+        </div>
+        <div class="meta" id="meta">Brasil · <span id="clock"></span></div>
+
+        <div class="weather-main">
+          <div>
+            <div class="temp" id="temp">22°</div>
+            <div class="condition" id="condition">Parcialmente nublado</div>
+            <div class="feels" id="feels">Sensação: 20°C</div>
+          </div>
+          <div class="weather-icon" id="icon">⛅</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-label">Umidade</div>
+            <div class="stat-val" id="humidity">68 <span class="stat-unit">%</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Vento</div>
+            <div class="stat-val" id="wind">14 <span class="stat-unit">km/h</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Visibilidade</div>
+            <div class="stat-val" id="visibility">9 <span class="stat-unit">km</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Pressão</div>
+            <div class="stat-val" id="pressure">1012 <span class="stat-unit">hPa</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Próximas horas</div>
+      <div class="hourly" id="hourly"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Próximos 5 dias</div>
+      <div class="forecast" id="forecast"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Índice UV</div>
+      <div class="uv-title" id="uvTitle">4 — Moderado</div>
+      <div class="uv-bar">
+        <div class="uv-dot" id="uvDot" style="left: 36%"></div>
+      </div>
+      <div class="uv-labels">
+        <span>Baixo</span>
+        <span>Moderado</span>
+        <span>Alto</span>
+        <span>Extremo</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">Cidades salvas</div>
+      <div class="saved-list" id="savedList"></div>
+      <div class="empty-msg" id="emptyMsg">Nenhuma cidade salva ainda.</div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
