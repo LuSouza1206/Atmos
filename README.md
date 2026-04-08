@@ -12,8 +12,6 @@ App de previsão do tempo com interface moderna, suporte a tema claro/escuro e s
 
 Abra o arquivo `index.html` diretamente no navegador. O projeto não possui dependências externas ou etapa de build.
 
-Para desenvolvimento, é recomendado o uso da extensão Live Server no VS Code.
-
 # Estrutura
 
 ```text
