@@ -1,0 +1,236 @@
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.pageHeader h1 {
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.section {
+  margin-bottom: var(--space-3);
+  padding: var(--space-3);
+}
+
+.section > h2 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-2);
+}
+
+.apptList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.apptCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: box-shadow 0.15s ease;
+}
+
+.apptCard:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.apptPhoto {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-photo);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.apptInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.apptSpecialty {
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+}
+
+.apptDate {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.apptActions {
+  display: flex;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.reschedulePanel {
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.reschedulePanel h2 {
+  margin-bottom: var(--space-2);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.empty {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.dateInput {
+  width: auto;
+  font-size: 0.875rem;
+}
+
+.agendaList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.agendaItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.agendaTime {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  min-width: 56px;
+}
+
+.agendaEmail {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.agendaNotes {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.slotFormRow {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.metricCard {
+  padding: var(--space-3);
+  text-align: center;
+}
+
+.metricValue {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.metricLabel {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.specialtyBars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 140px 1fr 40px;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.875rem;
+}
+
+.barLabel {
+  color: var(--color-text-muted);
+}
+
+.barTrack {
+  height: 8px;
+  background: var(--color-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.barCount {
+  text-align: right;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .apptCard {
+    flex-wrap: wrap;
+  }
+
+  .apptActions {
+    width: 100%;
+  }
+
+  .barRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

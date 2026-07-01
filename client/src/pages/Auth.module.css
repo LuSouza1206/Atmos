@@ -1,0 +1,77 @@
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-2);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-4);
+}
+
+.card h1 {
+  margin-bottom: var(--space-1);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.footer {
+  text-align: center;
+  margin-top: var(--space-3);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.demo {
+  margin-top: var(--space-3);
+  padding: var(--space-2);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.demo ul {
+  margin-top: var(--space-1);
+  padding-left: var(--space-2);
+}
+
+.roleSelector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.roleBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.roleBtn:hover {
+  border-color: var(--color-primary);
+}
+
+.roleBtnActive {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.roleIcon {
+  font-size: 1.5rem;
+}
