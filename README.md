@@ -1,12 +1,12 @@
 <div align="center">
 
-# Atmos
+# MedSched
 
 **PT** · [EN](#english)
 
-Dashboard de clima imersivo com back-end próprio, cache no servidor e dados reais.
+Sistema de agendamento de consultas médicas — busca, perfis, calendário e dashboards por perfil.
 
-![status](https://img.shields.io/badge/status-live-60a5fa?style=flat-square) ![React](https://img.shields.io/badge/React-18-black?style=flat-square) ![Node](https://img.shields.io/badge/Node-Express-black?style=flat-square) ![OpenWeatherMap](https://img.shields.io/badge/API-OpenWeatherMap-black?style=flat-square)
+![status](https://img.shields.io/badge/status-live-2563EB?style=flat-square) ![React](https://img.shields.io/badge/React-18-black?style=flat-square) ![Node](https://img.shields.io/badge/Node-Express-black?style=flat-square) ![SQLite](https://img.shields.io/badge/DB-SQLite-black?style=flat-square)
 
 </div>
 
@@ -16,71 +16,79 @@ Dashboard de clima imersivo com back-end próprio, cache no servidor e dados rea
 
 ### Sobre
 
-App de previsão do tempo full-stack com interface imersiva — fundo dinâmico por condição climática, tipografia de display e gráfico de temperatura semanal. O back-end em Node/Express faz proxy das chamadas à API, protege a chave de acesso e aplica cache em memória de 10 minutos.
+Plataforma full-stack de agendamento médico inspirada em **Doctolib** e **Zocdoc**: interface limpa e profissional, busca por especialidade/convênio, cards com próxima data disponível, fluxo de agendamento em etapas e dashboards para paciente, médico e admin.
 
 ### Funcionalidades
 
-- **Fundo dinâmico** — imagem muda conforme a condição climática (sol, chuva, tempestade...)
-- **Busca com autocomplete** — sugestões em tempo real via Geocoding API
-- **Dados atuais** — temperatura, sensação, umidade, vento, visibilidade, pressão
-- **Gráfico semanal** — linha SVG conectando as temperaturas dos próximos 6 dias
-- **Cidades salvas** — persistência via localStorage
-- **API key protegida** — chave nunca exposta no front-end, fica no servidor
+- **Landing com busca** — hero central, filtros por especialidade, convênio e gênero
+- **Resultados enxutos** — cards horizontais mostrando só a primeira data disponível
+- **Perfil do médico** — bio, convênios, avaliações e calendário de horários
+- **Fluxo de agendamento** — seleção de horário → confirmação
+- **Dashboard paciente** — consultas futuras/passadas, cancelar e reagendar
+- **Dashboard médico** — agenda do dia e gerenciamento de disponibilidade
+- **Dashboard admin** — métricas e gestão de médicos
+- **Autenticação JWT** — cadastro com perfil paciente ou médico
 
 ### Stack
 
 | Camada | Tecnologia |
 |--------|------------|
-| Front-end | React 18 + Vite |
+| Front-end | React 18 + Vite + React Router |
 | Back-end | Node.js + Express |
-| API | OpenWeatherMap (free tier) |
-| Cache | In-memory no servidor (10 min TTL) |
-| Estilização | CSS Modules + Clash Display |
+| Banco | SQLite (better-sqlite3) |
+| Auth | JWT + bcrypt |
+| Estilização | CSS global + CSS Modules |
+
+### Design
+
+- **Primária:** azul `#2563EB` / `#1D4ED8`
+- **CTA:** amarelo `#F5A623` (exclusivo para ações principais)
+- **Tipografia:** Montserrat (títulos) + Roboto (corpo)
+- **Grid:** ritmo de 8px, sombras sutis, sem glassmorphism
 
 ### Estrutura
-atmos/
+
+```
+medsched/
 ├── server/
-│   ├── index.js        # Express: proxy, cache, rotas /weather /forecast /uv /search
-│   ├── .env.example    # Modelo — copie para .env e adicione sua chave
-│   └── package.json
+│   ├── index.js           # Express API
+│   ├── db.js              # Schema SQLite
+│   ├── seed.js            # Dados demo
+│   ├── routes/            # auth, doctors, appointments, admin
+│   └── .env.example
 └── client/
-├── src/
-│   ├── components/
-│   │   ├── TempGraph       # Gráfico SVG semanal
-│   │   ├── SearchBar       # Busca com autocomplete
-│   │   └── SavedCities     # Cidades salvas
-│   ├── hooks/
-│   │   └── useWeather      # Fetch paralelo + cache local
-│   └── lib/
-│       ├── api.js          # Chamadas ao back-end
-│       └── weather.js      # Ícones, UV, agrupamento de forecast
-└── package.json
+    └── src/
+        ├── pages/         # 8 telas
+        ├── components/    # DoctorCard, TimeSlotGrid, Layout
+        ├── context/       # AuthContext
+        └── lib/api.js
+```
 
 ### Como rodar
 
 ```bash
-git clone https://github.com/LuSouza1206/Atmos.git
-cd Atmos
-
-# Configure a chave
-cp server/.env.example server/.env
-# Edite server/.env com sua chave do OpenWeatherMap
-
 # Terminal 1 — servidor
-cd server && npm install && npm run dev
+cd server
+cp .env.example .env
+npm install
+npm run seed    # popula banco com dados demo
+npm run dev
 
 # Terminal 2 — client
-cd client && npm install && npm run dev
+cd client
+npm install
+npm run dev
 ```
 
 Abra http://localhost:5173
 
-### Variáveis de ambiente
+### Contas demo (senha: `123456`)
 
-| Variável | Descrição |
-|----------|-----------|
-| `OWM_API_KEY` | Chave da API OpenWeatherMap |
-| `PORT` | Porta do servidor (padrão: 3001) |
+| Email | Perfil |
+|-------|--------|
+| maria@email.com | Paciente |
+| ana@medsched.com | Médica |
+| admin@medsched.com | Admin |
 
 ---
 
@@ -88,41 +96,23 @@ Abra http://localhost:5173
 
 ### About
 
-Full-stack weather app with an immersive interface — dynamic background per weather condition, display typography, and a weekly temperature graph. The Node/Express back-end proxies API calls, protects the access key, and applies a 10-minute in-memory cache.
+Full-stack medical appointment platform inspired by **Doctolib** and **Zocdoc**: clean professional UI, specialty/insurance search, doctor cards with next available slot, step-by-step booking, and role-based dashboards.
 
 ### Features
 
-- **Dynamic background** — image changes based on weather condition (sun, rain, storm...)
-- **Autocomplete search** — real-time city suggestions via Geocoding API
-- **Current data** — temperature, feels like, humidity, wind, visibility, pressure
-- **Weekly graph** — SVG line connecting temperatures for the next 6 days
-- **Saved cities** — localStorage persistence
-- **Protected API key** — key never exposed on the front-end, lives on the server
-
-### Stack
-
-| Layer | Technology |
-|-------|------------|
-| Front-end | React 18 + Vite |
-| Back-end | Node.js + Express |
-| API | OpenWeatherMap (free tier) |
-| Cache | In-memory on server (10 min TTL) |
-| Styling | CSS Modules + Clash Display |
+- **Search landing** — central hero, filters by specialty, insurance, gender
+- **Lean results** — horizontal cards showing only the first available date
+- **Doctor profile** — bio, insurance, reviews, availability calendar
+- **Booking flow** — time selection → confirmation
+- **Patient dashboard** — upcoming/past appointments, cancel and reschedule
+- **Doctor dashboard** — daily agenda and availability management
+- **Admin dashboard** — metrics and doctor management
+- **JWT auth** — register as patient or doctor
 
 ### Getting Started
 
 ```bash
-git clone https://github.com/LuSouza1206/Atmos.git
-cd Atmos
-
-# Set up the key
-cp server/.env.example server/.env
-# Edit server/.env with your OpenWeatherMap key
-
-# Terminal 1 — server
-cd server && npm install && npm run dev
-
-# Terminal 2 — client
+cd server && cp .env.example .env && npm install && npm run seed && npm run dev
 cd client && npm install && npm run dev
 ```
 
@@ -132,6 +122,6 @@ Open http://localhost:5173
 
 <div align="center">
 
-Feito com React + Node.js + OpenWeatherMap
+Feito com React + Node.js + SQLite
 
 </div>

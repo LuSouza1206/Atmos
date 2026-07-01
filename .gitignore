@@ -1,4 +1,7 @@
 node_modules
 dist
 server/.env
+server/medsched.db
+server/medsched.db-wal
+server/medsched.db-shm
 .DS_Store

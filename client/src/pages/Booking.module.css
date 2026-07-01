@@ -1,0 +1,132 @@
+.page {
+  padding: var(--space-3) 0 var(--space-6);
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.stepActive {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.stepDivider {
+  color: var(--color-border);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.sidebar {
+  padding: var(--space-3);
+  text-align: center;
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-2));
+}
+
+.photo {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-photo);
+  object-fit: cover;
+  margin: 0 auto var(--space-2);
+}
+
+.sidebar h2 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.specialty {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+}
+
+.main h1 {
+  margin-bottom: var(--space-1);
+}
+
+.hint {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+.summary {
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+}
+
+.summaryRow:last-child {
+  border-bottom: none;
+}
+
+.summaryRow span {
+  color: var(--color-text-muted);
+}
+
+.confirmCard {
+  max-width: 480px;
+  margin: var(--space-6) auto;
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.confirmIcon {
+  width: 64px;
+  height: 64px;
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto var(--space-3);
+}
+
+.confirmText {
+  color: var(--color-text-muted);
+  margin: var(--space-2) 0 var(--space-4);
+  line-height: 1.6;
+}
+
+.confirmActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+}
